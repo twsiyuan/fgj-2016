@@ -45,10 +45,36 @@ public class CharacterMovement : MonoBehaviour
 		var footDist = 0f;
 		this.ComputeDistance (this.transform as RectTransform, out footPoint, out footDist );
 		this.PhysicalMode = footDist >= this.physicalThreshold;
+
+		LevelController.Singleton.Player = this;
 	}
 
 	void Update ()
 	{
+		var rigid = this.GetComponent<Rigidbody2D> ();
+		rigid.AddForce (new Vector2(this.speed, 0 ));
+
+
+		var footPoint = Vector2.zero;
+		var footDist = 0f;
+		this.ComputeDistance (this.transform as RectTransform, out footPoint, out footDist );
+
+		var trans = transform as RectTransform;
+		if ( footDist < 0) {
+			// Obstancle ?
+			if (Mathf.Abs (footDist) <= this.physicalThreshold) {
+				trans.position = new Vector3 (footPoint.x, footPoint.y, 0);
+			}
+
+		}
+
+		//var v = rigid.velocity;
+		//var pos = rigid.transform.position ;
+		//pos.x += this.speed * Time.deltaTime;
+		//rigid.transform.position = pos;
+		//rigid.AddForce (new Vector2 (this.speed, 0), ForceMode2D.Impulse);
+		//rigid.velocity = 
+		/*
 		var trans = transform as RectTransform;
 
 		// Move
@@ -87,7 +113,7 @@ public class CharacterMovement : MonoBehaviour
 			}
 		}
 
-
+*/
 	}
 
 	/*void OnTriggerEnter2D (Collider2D c){
@@ -128,6 +154,13 @@ public class CharacterMovement : MonoBehaviour
 		footPoint = pos + dir * dist - new Vector2(xoffset, 0);
 		footDistance = hitInfo.collider == null ? float.PositiveInfinity : dist - height;	
 
-//	Debug.LogFormat ("Dist: {0}", footDistance);
+	//	Debug.LogFormat ("Dist: {0}", footDistance);
 	}
+
+/*
+RaycastHit2D[] hits = new RaycastHit2D[10];
+
+void test(){
+	//Physics2D.BoxCastNonAlloc(
+}*/
 }
