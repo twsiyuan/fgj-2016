@@ -20,9 +20,19 @@ public class LevelController : MonoBehaviour {
 		}
 	}
 
+	public bool HasNextLevel{
+		get{ 
+			return this.currentLevel + 1 < this.levelData.LevelCount;
+		}
+	}
+
 	public void NextLevel(){
-		this.currentLevel += 1;
-		this.LoadCurrentLevel ();
+		if (!this.HasNextLevel) {
+			Debug.LogError ("No Levels, 賣鬧喔");
+		} else {
+			this.currentLevel += 1;
+			this.LoadCurrentLevel ();
+		}
 	}
 
 	void StartLevel(){
@@ -41,5 +51,11 @@ public class LevelController : MonoBehaviour {
 
 	void Start(){
 		this.StartLevel ();
+	}
+
+	void Update(){
+		if (Input.GetKeyDown (KeyCode.L)) {
+			this.NextLevel ();
+		}
 	}
 }
