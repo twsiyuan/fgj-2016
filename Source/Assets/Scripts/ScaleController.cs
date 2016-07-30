@@ -3,10 +3,16 @@ using System.Collections;
 
 public class ScaleController : ValueController {
 
-	public Vector3 startScale = new Vector3 (1, 1, 1);
+	//public Vector3 startScale = new Vector3 (1, 1, 1);
 	public Vector3 endScale = new Vector3(10, 10, 10);
 
 	float t = 0;
+	private Vector3 startScale;
+
+	void Awake ()
+	{
+		startScale = transform.localScale;
+	}
 
 	public override float Value
 	{
@@ -19,7 +25,7 @@ public class ScaleController : ValueController {
 	}
 
 	void Reset(){
-		this.startScale = this.transform.localScale;
+		this.endScale = this.transform.localScale;
 	}
 		
 }
