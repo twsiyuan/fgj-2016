@@ -20,11 +20,6 @@ public class CharacterMovement : MonoBehaviour
 
 	[SerializeField]
 	bool run = false;
-	bool obstacle = false;
-
-	public void ResetObstacles(){
-		this.obstacle = false;
-	}
 
 	public bool PhysicalMode
 	{
@@ -34,6 +29,8 @@ public class CharacterMovement : MonoBehaviour
 			this.GetComponent<Rigidbody2D>().gravityScale = value ? this.physicalGravityScale : 0;
 		}
 	}
+
+	bool obstacle = false;
 
 	bool physicalMode = true;
 
@@ -62,8 +59,6 @@ public class CharacterMovement : MonoBehaviour
 				pos.x += dx;
 				trans.anchoredPosition = pos;
 			}
-		} else {
-		//	this.obstacle = false;
 		}
 
 		// Set to ground
@@ -71,35 +66,48 @@ public class CharacterMovement : MonoBehaviour
 			var footPoint = Vector2.zero;
 			var footDist = 0f;
 			this.ComputeDistance (this.transform as RectTransform, out footPoint, out footDist );
+			this.obstacle = false;
 
-			this.PhysicalMode = footDist >= this.physicalThreshold;
-			if (!physicalMode) {
-				trans.anchoredPosition = footPoint;
+			if ( footDist < 0) {
+				// Obstancle ?
+				if (Mathf.Abs (footDist) >= this.physicalThreshold) {
+					this.obstacle = true;
+				}
+			
+			}
+				
+			if (!this.obstacle)
+			{
+				// Normal
+				this.PhysicalMode = footDist >= this.physicalThreshold;
+				if (!physicalMode) {
+					trans.anchoredPosition = footPoint;
+				}
 			}
 		}
 
 
 	}
 
-	void OnTriggerEnter2D (Collider2D c){
+	/*void OnTriggerEnter2D (Collider2D c){
 		if (c.gameObject.tag == "NextLevel") {
 			LevelController.Singleton.NextLevel ();
 		}
-	}
+	}*/
 
-	void OnTriggerStay2D (Collider2D c){
+	/*void OnTriggerStay2D (Collider2D c){
 		if (c.gameObject.tag == "Obstacle")
 		{
 			this.obstacle = true;
 		}
-	}
+	}*/
 
-	void OnTriggerExit2D(Collider2D c){
+	/*void OnTriggerExit2D(Collider2D c){
 		if (c.gameObject.tag == "Obstacle")
 		{
 			this.obstacle = false;
 		}
-	}
+	}*/
 
 /*	void OnTriggerExit2D(Collider2D c){
 		this.obstacle = c != null && c.gameObject.tag == "Obstacle";
@@ -115,6 +123,8 @@ public class CharacterMovement : MonoBehaviour
 		var dist = hitInfo.collider == null ? 0 : hitInfo.distance;
 
 		footPoint = pos + dir * dist;
-		footDistance = hitInfo.collider == null ? float.PositiveInfinity : dist - height;
+		footDistance = hitInfo.collider == null ? float.PositiveInfinity : dist - height;	
+
+//	Debug.LogFormat ("Dist: {0}", footDistance);
 	}
 }
