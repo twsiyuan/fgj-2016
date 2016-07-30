@@ -76,13 +76,14 @@ public class CharacterMovement : MonoBehaviour
 			
 			}
 				
-			if (!this.obstacle)
-			{
+			if (!this.obstacle) {
 				// Normal
 				this.PhysicalMode = footDist >= this.physicalThreshold;
 				if (!physicalMode) {
-					trans.anchoredPosition = footPoint;
+					trans.position = new Vector3 (footPoint.x, footPoint.y, 0);
 				}
+			} else {
+				Debug.LogFormat ("{0}", footDist);
 			}
 		}
 
@@ -116,13 +117,15 @@ public class CharacterMovement : MonoBehaviour
 	void ComputeDistance(RectTransform trans, out Vector2 footPoint, out float footDistance)
 	{
 		var height = trans.rect.height;
-		var pos = trans.anchoredPosition + new Vector2( 0, height);
+		var xoffset = 0;
+
+		var pos = new Vector2 (trans.position.x,trans.position.y) + new Vector2( xoffset, height);
 		var dir = groundRay;
 
 		var hitInfo = Physics2D.Raycast (pos, dir, groundDistance, this.layerMask);
 		var dist = hitInfo.collider == null ? 0 : hitInfo.distance;
 
-		footPoint = pos + dir * dist;
+		footPoint = pos + dir * dist - new Vector2(xoffset, 0);
 		footDistance = hitInfo.collider == null ? float.PositiveInfinity : dist - height;	
 
 //	Debug.LogFormat ("Dist: {0}", footDistance);
