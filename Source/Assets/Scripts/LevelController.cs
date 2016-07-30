@@ -41,8 +41,20 @@ public class LevelController : MonoBehaviour {
 	}
 
 	void LoadCurrentLevel(){
+
+		var scene = this.levelData [this.currentLevel];
+		#if UNITY_EDITOR
+		for (var ii = 0; ii < SceneManager.sceneCount; ii++){
+			var s = SceneManager.GetSceneAt(ii);
+			if (s.isLoaded && s.name == scene){
+				return;
+			}
+		}
+
+		#endif
+
 		StartCoroutine (LoadCurrentLevelRoutine ());
-		SceneManager.LoadScene (this.levelData[this.currentLevel]);
+		SceneManager.LoadScene (scene);
 	}
 
 	IEnumerator LoadCurrentLevelRoutine ()
