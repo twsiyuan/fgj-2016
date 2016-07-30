@@ -31,6 +31,6 @@ sysinfo.txt
 Source/Library/*
 Source/Temp/*
 
-obj/*
-Debug/*
-Release/*
+Source/obj/*
+Source/Debug/*
+Source/Release/*
