@@ -22,6 +22,10 @@ public class CharacterMovement : MonoBehaviour
 	bool run = false;
 	bool obstacle = false;
 
+	public void ResetObstacles(){
+		this.obstacle = false;
+	}
+
 	public bool PhysicalMode
 	{
 		get{ return this.physicalMode;}
