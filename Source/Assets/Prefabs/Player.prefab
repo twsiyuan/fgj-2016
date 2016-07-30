@@ -52,7 +52,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 90}
   serializedVersion: 2
-  m_Size: {x: 102, y: 180}
+  m_Size: {x: 79, y: 180}
 --- !u!95 &9512504
 Animator:
   serializedVersion: 3
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 180
-  physicalThreshold: 10
+  physicalThreshold: 30
   physicalGravityScale: 20
   run: 1
 --- !u!222 &22250864
@@ -144,8 +144,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -431, y: -344}
-  m_SizeDelta: {x: 102, y: 180}
+  m_AnchoredPosition: {x: -580, y: -344}
+  m_SizeDelta: {x: 79, y: 180}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1001 &100100000
 Prefab:
