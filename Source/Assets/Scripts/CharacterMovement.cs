@@ -83,7 +83,7 @@ public class CharacterMovement : MonoBehaviour
 					trans.position = new Vector3 (footPoint.x, footPoint.y, 0);
 				}
 			} else {
-				Debug.LogFormat ("{0}", footDist);
+			//	Debug.LogFormat ("{0}", footDist);
 			}
 		}
 
