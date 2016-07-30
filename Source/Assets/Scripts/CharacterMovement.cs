@@ -70,6 +70,11 @@ public class CharacterMovement : MonoBehaviour
 		}
 	}
 
+	void OnTriggerEnter2D(Collider2D c){
+		Debug.LogFormat ("{0}", c == null ? "NONE" : c.tag);
+		this.run = c == null || c.gameObject.tag != "Obstacle";
+	}
+
 	void ComputeDistance(RectTransform trans, out Vector2 footPoint, out float footDistance)
 	{
 		var height = trans.rect.height;
