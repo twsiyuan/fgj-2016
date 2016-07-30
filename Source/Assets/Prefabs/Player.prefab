@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 180
-  physicalThreshold: 30
+  physicalThreshold: 50
   physicalGravityScale: 20
   run: 1
 --- !u!114 &11443042
