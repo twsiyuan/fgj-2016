@@ -41,7 +41,14 @@ public class LevelController : MonoBehaviour {
 	}
 
 	void LoadCurrentLevel(){
+		StartCoroutine (LoadCurrentLevelRoutine ());
 		SceneManager.LoadScene (this.levelData[this.currentLevel]);
+	}
+
+	IEnumerator LoadCurrentLevelRoutine ()
+	{
+		float fadeTime = GetComponent<Fade> ().BeginFade (1);
+		yield return new WaitForSeconds (fadeTime);
 	}
 
 	void Awake(){
