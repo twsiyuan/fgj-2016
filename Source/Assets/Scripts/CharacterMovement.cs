@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CharacterMovement : MonoBehaviour
 {
-	public float velocity;
+	public Vector2 velocity;
 
 	private Collider2D coll;
 	private float x, y;
@@ -30,6 +30,6 @@ public class CharacterMovement : MonoBehaviour
 			x *= -1;
 			Debug.Log ("Triggered");
 		}*/
-		transform.localPosition = new Vector3 (x + velocity, y, 0);
+		transform.localPosition = new Vector3 (x + velocity.x * Time.deltaTime, y + velocity.y * Time.deltaTime, 0);
 	}
 }
