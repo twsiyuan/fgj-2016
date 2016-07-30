@@ -20,10 +20,23 @@ public class LevelController : MonoBehaviour {
 		}
 	}
 
+	public CharacterMovement Player {
+		get;
+		set;
+	}
+
 	public bool HasNextLevel{
 		get{ 
 			return this.currentLevel + 1 < this.levelData.LevelCount;
 		}
+	}
+
+	public void DieAndRestartLevel(){
+		if (this.Player != null) {
+			this.Player.enabled = false;
+		}
+
+		this.LoadCurrentLevel (Color.red, true);
 	}
 
 	public void NextLevel(){
@@ -40,27 +53,35 @@ public class LevelController : MonoBehaviour {
 		this.LoadCurrentLevel ();
 	}
 
-	void LoadCurrentLevel(){
-
-		var scene = this.levelData [this.currentLevel];
-		#if UNITY_EDITOR
-		for (var ii = 0; ii < SceneManager.sceneCount; ii++){
-			var s = SceneManager.GetSceneAt(ii);
-			if (s.isLoaded && s.name == scene){
-				return;
-			}
-		}
-
-		#endif
-
-		StartCoroutine (LoadCurrentLevelRoutine ());
-		SceneManager.LoadScene (scene);
+	void LoadCurrentLevel(bool reload = false){
+		this.LoadCurrentLevel (Color.black);
 	}
 
-	IEnumerator LoadCurrentLevelRoutine ()
+	void LoadCurrentLevel(Color fadeColor, bool reload = false){
+
+		var scene = this.levelData [this.currentLevel];
+
+		#if UNITY_EDITOR
+		if (!reload){
+			for (var ii = 0; ii < SceneManager.sceneCount; ii++){
+				var s = SceneManager.GetSceneAt(ii);
+				if (s.isLoaded && s.name == scene){
+					return;
+				}
+			}
+		}
+		#endif
+
+		StartCoroutine (LoadCurrentLevelRoutine (scene, fadeColor));
+
+	}
+
+	IEnumerator LoadCurrentLevelRoutine (string scene, Color fadeColor)
 	{
-		float fadeTime = GetComponent<Fade> ().BeginFade (1);
+		float fadeTime = GetComponent<Fade> ().BeginFade (1, fadeColor);
 		yield return new WaitForSeconds (fadeTime);
+
+		SceneManager.LoadScene (scene);
 	}
 
 	void Awake(){
@@ -75,6 +96,8 @@ public class LevelController : MonoBehaviour {
 	void Update(){
 		if (Input.GetKeyDown (KeyCode.L)) {
 			this.NextLevel ();
+		} else if (Input.GetKeyDown (KeyCode.R)) {
+			this.DieAndRestartLevel ();
 		}
 	}
 }
