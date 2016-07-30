@@ -14,6 +14,7 @@ GameObject:
   - 50: {fileID: 5007070}
   - 61: {fileID: 6106828}
   - 114: {fileID: 11487872}
+  - 95: {fileID: 9512504}
   m_Layer: 31
   m_Name: Player
   m_TagString: Untagged
@@ -49,9 +50,26 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 110}
+  m_Offset: {x: 0, y: 90}
   serializedVersion: 2
-  m_Size: {x: 104, y: 220}
+  m_Size: {x: 102, y: 180}
+--- !u!95 &9512504
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 182404}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3a4234ee0be3c4cf9a302b6a445c9f76, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11475846
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -71,9 +89,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: ea87dd1bfe49b4dd08e51b57605767ab, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -126,8 +144,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -478, y: 156}
-  m_SizeDelta: {x: 104, y: 220}
+  m_AnchoredPosition: {x: -431, y: -344}
+  m_SizeDelta: {x: 102, y: 180}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1001 &100100000
 Prefab:
