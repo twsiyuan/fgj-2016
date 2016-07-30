@@ -5,13 +5,18 @@ using System.Collections;
 
 [ExecuteInEditMode]
 public class ColliderAutoSize : MonoBehaviour {
-	#if UNITY_EDITOR
+
+	RectTransform trans;
+	BoxCollider2D collider;
+
+	void Awake(){
+		this.trans = this.GetComponent<RectTransform> ();
+		this.collider = this.GetComponent<BoxCollider2D>();;
+	}
+
 	void Update () {
-		var rect = this.GetComponent<RectTransform> ();
-		var collider = this.GetComponent<BoxCollider2D>();
-		if (rect != null && collider != null){
-			collider.size = rect.sizeDelta;
+		if (this.trans != null && this.collider != null){
+			this.collider.size = trans.sizeDelta;
 		}
 	}
-	#endif
 }
