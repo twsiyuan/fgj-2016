@@ -3,33 +3,83 @@ using System.Collections;
 
 public class CharacterMovement : MonoBehaviour
 {
-	public Vector2 velocity;
+	readonly Vector2 groundRay = new Vector2 (0, -1);
+	const float groundDistance = 800;
+	int layerMask = 0;
 
-	private Collider2D coll;
-	private float x, y;
+	[Header("Speed")]
+	[SerializeField]
+	float speed = 80;
+
+	[Header("System")]
+	[SerializeField]
+	float physicalThreshold = 10f;
+
+	[SerializeField]
+	float physicalGravityScale = 10;
+
+	[SerializeField]
+	bool run = false;
+
+	public bool PhysicalMode
+	{
+		get{ return this.physicalMode;}
+		set{
+			this.physicalMode = value;
+			this.GetComponent<Rigidbody2D>().gravityScale = value ? this.physicalGravityScale : 0;
+		}
+	}
+
+	bool physicalMode = true;
 
 	void Awake ()
 	{
-		coll = GetComponent <BoxCollider2D> ();
-		x = transform.localPosition.x;
-		y = transform.localPosition.y;
+		this.layerMask = LayerMask.GetMask ("Ground");
 	}
 
-	void OnTriggerEnter2D (Collider2D other)
+	void Start()
 	{
-		Debug.Log ("Triggered");
-		velocity *= -1;
-		//transform.localPosition = new Vector3 (x + velocity, y, 0);
+		var footPoint = Vector2.zero;
+		var footDist = 0f;
+		this.ComputeDistance (this.transform as RectTransform, out footPoint, out footDist );
+		this.PhysicalMode = footDist >= this.physicalThreshold;
 	}
 
 	void Update ()
 	{
-		x = transform.localPosition.x;
-		/*if (coll.isTrigger)
+		var trans = transform as RectTransform;
+
+		// Move
+		if (this.run && !this.PhysicalMode) {
+			var dx = this.speed * Time.deltaTime;
+			var pos = trans.anchoredPosition;
+			pos.x += dx;
+			trans.anchoredPosition = pos;
+		}
+
+		// Set to ground
 		{
-			x *= -1;
-			Debug.Log ("Triggered");
-		}*/
-		transform.localPosition = new Vector3 (x + velocity.x * Time.deltaTime, y + velocity.y * Time.deltaTime, 0);
+			var footPoint = Vector2.zero;
+			var footDist = 0f;
+			this.ComputeDistance (this.transform as RectTransform, out footPoint, out footDist );
+
+			this.PhysicalMode = footDist >= this.physicalThreshold;
+			if (!physicalMode) {
+				trans.anchoredPosition = footPoint;
+			}
+		}
+	}
+
+	void ComputeDistance(RectTransform trans, out Vector2 footPoint, out float footDistance)
+	{
+		var height = trans.rect.height;
+		var pos = trans.anchoredPosition + new Vector2( 0, height);
+		var dir = groundRay;
+
+		var hitInfo = Physics2D.Raycast (pos, dir, groundDistance, this.layerMask);
+		var dist = hitInfo.collider == null ? 0 : hitInfo.distance;
+
+		footPoint = pos + dir * dist;
+		footDistance = hitInfo.collider == null ? float.PositiveInfinity : dist - height;
 	}
 }
