@@ -4,20 +4,16 @@ using System.Collections;
 [CreateAssetMenu(fileName = "Levels" , menuName = "TeamA/Data Setting" , order = 1)]
 public class LevelData : ScriptableObject 
 {
-	public string[] LevelNames{
-		get{ return this.levelNames; }
-	}
-
-	public string GetNextLevel(string name){
-		var index = this.GetLevelIndex (name);
-		return this.GetNextLevel (index);
-	}
-
-	public string GetNextLevel(int index){
-		if (index + 1 >= this.levelNames.Length || index + 1 < 0) {
-			return null;
+	public string this[int index]{
+		get{ 
+			return this.levelNames [index];
 		}
-		return this.levelNames[index + 1];
+	}
+
+	public int LevelCount{
+		get{ 
+			return this.levelNames.Length;
+		}
 	}
 
 	public int GetLevelIndex(string name){
