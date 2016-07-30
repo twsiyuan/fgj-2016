@@ -20,6 +20,7 @@ public class CharacterMovement : MonoBehaviour
 
 	[SerializeField]
 	bool run = false;
+	bool obstacle = false;
 
 	public bool PhysicalMode
 	{
@@ -50,11 +51,15 @@ public class CharacterMovement : MonoBehaviour
 		var trans = transform as RectTransform;
 
 		// Move
-		if (this.run && !this.PhysicalMode) {
-			var dx = this.speed * Time.deltaTime;
-			var pos = trans.anchoredPosition;
-			pos.x += dx;
-			trans.anchoredPosition = pos;
+		if (!this.obstacle) {
+			if (this.run && !this.PhysicalMode) {
+				var dx = this.speed * Time.deltaTime;
+				var pos = trans.anchoredPosition;
+				pos.x += dx;
+				trans.anchoredPosition = pos;
+			}
+		} else {
+		//	this.obstacle = false;
 		}
 
 		// Set to ground
@@ -68,12 +73,33 @@ public class CharacterMovement : MonoBehaviour
 				trans.anchoredPosition = footPoint;
 			}
 		}
+
+
 	}
 
-	void OnTriggerEnter2D(Collider2D c){
-		Debug.LogFormat ("{0}", c == null ? "NONE" : c.tag);
-		this.run = c == null || c.gameObject.tag != "Obstacle";
+	void OnTriggerEnter2D (Collider2D c){
+		if (c.gameObject.tag == "NextLevel") {
+			LevelController.Singleton.NextLevel ();
+		}
 	}
+
+	void OnTriggerStay2D (Collider2D c){
+		if (c.gameObject.tag == "Obstacle")
+		{
+			this.obstacle = true;
+		}
+	}
+
+	void OnTriggerExit2D(Collider2D c){
+		if (c.gameObject.tag == "Obstacle")
+		{
+			this.obstacle = false;
+		}
+	}
+
+/*	void OnTriggerExit2D(Collider2D c){
+		this.obstacle = c != null && c.gameObject.tag == "Obstacle";
+	}*/
 
 	void ComputeDistance(RectTransform trans, out Vector2 footPoint, out float footDistance)
 	{
