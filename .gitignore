@@ -30,3 +30,7 @@ sysinfo.txt
 *.unitypackage
 Source/Library/*
 Source/Temp/*
+
+obj/*
+Debug/*
+Release/*
