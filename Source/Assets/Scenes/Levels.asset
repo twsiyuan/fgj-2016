@@ -17,4 +17,5 @@ MonoBehaviour:
   - LevelTeleport
   - LevelBoxWater
   - LevelTeleportSlime
+  - LevelPhysical
   - End
