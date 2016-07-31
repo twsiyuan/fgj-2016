@@ -19,16 +19,11 @@ public class CharacterMovement : MonoBehaviour
 	float physicalGravityScale = 10;
 
 	[SerializeField]
+	float stepCheck = 50;
+
+	[SerializeField]
 	bool run = false;
 
-	public bool PhysicalMode
-	{
-		get{ return this.physicalMode;}
-		set{
-			this.physicalMode = value;
-			this.GetComponent<Rigidbody2D>().gravityScale = value ? this.physicalGravityScale : 0;
-		}
-	}
 
 	bool obstacle = false;
 
@@ -41,11 +36,6 @@ public class CharacterMovement : MonoBehaviour
 
 	void Start()
 	{
-		var footPoint = Vector2.zero;
-		var footDist = 0f;
-		this.ComputeDistance (this.transform as RectTransform, out footPoint, out footDist );
-		this.PhysicalMode = footDist >= this.physicalThreshold;
-
 		LevelController.Singleton.Player = this;
 	}
 
@@ -56,18 +46,39 @@ public class CharacterMovement : MonoBehaviour
 
 	void Update ()
 	{
-		var footPoint = Vector2.zero;
-		var footDist = 0f;
-		this.ComputeDistance (this.transform as RectTransform, out footPoint, out footDist );
+		/*var trans = transform as RectTransform;
 
-		var trans = transform as RectTransform;
-		if ( footDist < 0) {
-			// Obstancle ?
-			if (Mathf.Abs (footDist) <= this.physicalThreshold) {
-				trans.position = new Vector3 (footPoint.x, footPoint.y, 0);
+		// Stand
+		{
+			var footPoint = Vector2.zero;
+			var footDist = 0f;
+			this.ComputeDistance (this.transform as RectTransform, out footPoint, out footDist);
+
+			if (footDist < 0) {
+				// Obstancle ?
+				if (Mathf.Abs (footDist) <= this.physicalThreshold) {
+					trans.position = new Vector3 (footPoint.x, footPoint.y, 0);
+				}
+
 			}
+		}*/
 
-		}
+		// Step
+		/*{
+			var footPoint = Vector2.zero;
+			var footDist = 0f;
+			this.ComputeDistance (this.transform as RectTransform, out footPoint, out footDist, stepCheck);
+			Debug.Log (footDist);
+		
+			if (footDist < 0) {
+				if (Mathf.Abs (footDist) <= this.physicalThreshold) {
+					var pos = trans.position;
+					pos.y = footPoint.y +10;
+					trans.position = pos;
+				}
+			}
+		}*/
+
 
 		//var v = rigid.velocity;
 		//var pos = rigid.transform.position ;
@@ -141,10 +152,9 @@ public class CharacterMovement : MonoBehaviour
 		this.obstacle = c != null && c.gameObject.tag == "Obstacle";
 	}*/
 
-	void ComputeDistance(RectTransform trans, out Vector2 footPoint, out float footDistance)
+void ComputeDistance(RectTransform trans, out Vector2 footPoint, out float footDistance, float xoffset = 0)
 	{
 		var height = trans.rect.height;
-		var xoffset = 0;
 
 		var pos = new Vector2 (trans.position.x,trans.position.y) + new Vector2( xoffset, height);
 		var dir = groundRay;
