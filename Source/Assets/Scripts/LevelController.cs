@@ -41,6 +41,24 @@ public class LevelController : MonoBehaviour {
 		this.LoadCurrentLevel (Color.red, true);
 	}
 
+	public void Replay ()
+	{
+		this.currentLevel = 0;
+		this.LoadCurrentLevel ();
+	}
+
+	public void ResetLevel ()
+	{
+		if (!this.HasNextLevel)
+		{
+			Replay ();
+		}
+		else
+		{
+			DieAndRestartLevel ();
+		}
+	}
+
 	public void NextLevel(){
 		if (!this.HasNextLevel) {
 			Debug.LogError ("No Levels, 賣鬧喔");
