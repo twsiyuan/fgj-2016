@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelNames:
   - LevelStart
+  - LevelYYY
   - Stage 1
   - LevelXX
   - Level02
