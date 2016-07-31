@@ -4,16 +4,23 @@ using System.Collections;
 
 public class NextLevelTrigger : MonoBehaviour
 {
-	void Awake(){
-		var img = this.GetComponent<Image> ();
-		if (img != null) {
-			img.enabled = false;
+	public Sprite doorOpen;
+	public float time = 2f;
+	
+	void OnTriggerEnter2D (Collider2D c)
+	{
+		if (c.gameObject.layer == LayerMask.NameToLayer("Player"))
+		{
+			c.GetComponent<CharacterMovement> ().enabled = false;
+			StartCoroutine (NextLevelAnimation ());
 		}
 	}
-	
-	void OnTriggerEnter2D (Collider2D c){
-		if (c.gameObject.layer == LayerMask.NameToLayer("Player")) {
-			LevelController.Singleton.NextLevel ();
-		}
+
+	IEnumerator NextLevelAnimation ()
+	{
+		Debug.Log ("ANIM");
+		GetComponent<Image> ().sprite = doorOpen;
+		yield return new WaitForSeconds (time);
+		LevelController.Singleton.NextLevel ();
 	}
 }

@@ -11,7 +11,6 @@ GameObject:
   - 222: {fileID: 22254882}
   - 114: {fileID: 11479186}
   - 61: {fileID: 6151006}
-  - 114: {fileID: 11475028}
   - 114: {fileID: 11465384}
   m_Layer: 0
   m_Name: NextLevel
@@ -31,9 +30,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 72.55046, y: 90.38054}
   serializedVersion: 2
-  m_Size: {x: 175, y: 616}
+  m_Size: {x: 117.39901, y: 743.23944}
 --- !u!114 &11465384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -45,17 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4e1ec76459a4416a9e0f61cfab0671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11475028
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 158264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9dc543eb581b4e4f939134ef9bb40b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  doorOpen: {fileID: 0}
+  time: 2
 --- !u!114 &11479186
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -75,9 +65,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 28cc88532858d4dd79a8c6ec6ae711d2, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -97,14 +87,14 @@ RectTransform:
   m_GameObject: {fileID: 158264}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1346, y: -290}
+  m_AnchoredPosition: {x: 3485, y: -210}
   m_SizeDelta: {x: 175, y: 616}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &100100000
