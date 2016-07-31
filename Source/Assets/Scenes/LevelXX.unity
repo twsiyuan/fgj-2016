@@ -126,9 +126,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 385.19385, y: -6.3362885}
+  m_Offset: {x: 385.19385, y: -8.41716}
   serializedVersion: 2
-  m_Size: {x: 268.65735, y: 112.13898}
+  m_Size: {x: 268.65735, y: 107.977234}
 --- !u!68 &102146644
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -575,7 +575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   there: {fileID: 753125493}
   doPlayer: 1
-  doMonster: 1
+  doMonster: 0
 --- !u!114 &333141189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1274,7 +1274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd5026adb4b7c4eda880b671fd5293a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 70
+  speed: 110
   slip: 1
   slipDir: -1
   initDir: 1
@@ -1753,7 +1753,7 @@ RectTransform:
   m_RootOrder: 9
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2074, y: 73}
+  m_AnchoredPosition: {x: 2107, y: 73}
   m_SizeDelta: {x: 64, y: 313}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &743366136
@@ -2593,7 +2593,7 @@ MonoBehaviour:
   speed: 30
   slip: 1
   slipDir: -1
-  initDir: -1
+  initDir: 1
 --- !u!114 &1448194486
 MonoBehaviour:
   m_ObjectHideFlags: 0
