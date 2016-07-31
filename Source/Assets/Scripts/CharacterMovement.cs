@@ -49,12 +49,13 @@ public class CharacterMovement : MonoBehaviour
 		LevelController.Singleton.Player = this;
 	}
 
+	void FixedUpdate(){
+		var rigid = this.GetComponent<Rigidbody2D> ();
+		rigid.AddForce(new Vector2(this.speed, 0 ));
+	}
+
 	void Update ()
 	{
-		var rigid = this.GetComponent<Rigidbody2D> ();
-		rigid.AddForce (new Vector2(this.speed, 0 ));
-
-
 		var footPoint = Vector2.zero;
 		var footDist = 0f;
 		this.ComputeDistance (this.transform as RectTransform, out footPoint, out footDist );
@@ -75,7 +76,7 @@ public class CharacterMovement : MonoBehaviour
 		//rigid.AddForce (new Vector2 (this.speed, 0), ForceMode2D.Impulse);
 		//rigid.velocity = 
 		/*
-		var trans = transform as RectTransform;
+		/*var trans = transform as RectTransform;
 
 		// Move
 		if (!this.obstacle) {
