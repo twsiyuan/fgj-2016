@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelNames:
   - LevelStart
-  - LevelYYY
-  - LevelTelport
-  - Stage 1
-  - LevelXX
+  - LevelBox
+  - LevelTeleport
+  - LevelBoxWater
+  - LevelTeleportSlime
   - End

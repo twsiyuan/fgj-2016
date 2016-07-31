@@ -12,12 +12,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelStart.unity
   - enabled: 1
-    path: Assets/Scenes/LevelYYY.unity
+    path: Assets/Scenes/LevelBox.unity
   - enabled: 1
-    path: Assets/Scenes/LevelTelport.unity
+    path: Assets/Scenes/LevelTeleport.unity
   - enabled: 1
-    path: Assets/Scenes/Stage 1.unity
+    path: Assets/Scenes/LevelBoxWater.unity
   - enabled: 1
-    path: Assets/Scenes/LevelXX.unity
+    path: Assets/Scenes/LevelTeleportSlime.unity
   - enabled: 1
     path: Assets/Scenes/End.unity
