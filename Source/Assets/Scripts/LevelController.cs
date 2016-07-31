@@ -4,6 +4,8 @@ using System.Collections;
 
 public class LevelController : MonoBehaviour {
 
+	public AudioSource dieAudio;
+
 	static LevelController singleton = null;
 
 	[SerializeField]
@@ -35,7 +37,7 @@ public class LevelController : MonoBehaviour {
 		if (this.Player != null) {
 			this.Player.enabled = false;
 		}
-
+		dieAudio.Play ();
 		this.LoadCurrentLevel (Color.red, true);
 	}
 
