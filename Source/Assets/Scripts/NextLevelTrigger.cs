@@ -18,7 +18,7 @@ public class NextLevelTrigger : MonoBehaviour
 
 	IEnumerator NextLevelAnimation ()
 	{
-		Debug.Log ("ANIM");
+	//	Debug.Log ("ANIM");
 		GetComponent<Image> ().sprite = doorOpen;
 		yield return new WaitForSeconds (time);
 		LevelController.Singleton.NextLevel ();
