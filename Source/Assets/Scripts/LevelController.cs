@@ -78,10 +78,12 @@ public class LevelController : MonoBehaviour {
 
 	IEnumerator LoadCurrentLevelRoutine (string scene, Color fadeColor)
 	{
+		SceneManager.LoadScene (scene);
+
 		float fadeTime = GetComponent<Fade> ().BeginFade (1, fadeColor);
 		yield return new WaitForSeconds (fadeTime);
 
-		SceneManager.LoadScene (scene);
+
 	}
 
 	void Awake(){

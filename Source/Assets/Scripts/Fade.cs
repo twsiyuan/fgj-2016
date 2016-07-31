@@ -36,6 +36,6 @@ public class Fade : MonoBehaviour
 	void OnLevelWasLoaded ()
 	{
 		alpha = 1;
-		BeginFade (-1, Color.black);
+		BeginFade (-1, this.fadeColor);
 	}
 }
