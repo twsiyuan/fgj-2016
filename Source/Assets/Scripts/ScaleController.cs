@@ -20,6 +20,8 @@ public class ScaleController : ValueController {
 		set{ 
 			this.t = Mathf.Clamp01(value);
 		
+			/*if (name == "Water")
+				transform.localScale = Vector3.Lerp (startScaleScale, end)*/
 			this.transform.localScale = Vector3.Lerp (this.startScale, this.endScale, this.t);
 		}
 	}

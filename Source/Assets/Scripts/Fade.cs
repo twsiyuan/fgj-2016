@@ -13,6 +13,8 @@ public class Fade : MonoBehaviour
 
 	void OnGUI ()
 	{
+		if (fadeOutTexture == null)
+			return;
 		alpha += fadeDir * fadeSpeed * Time.deltaTime;
 		alpha = Mathf.Clamp01 (alpha);
 

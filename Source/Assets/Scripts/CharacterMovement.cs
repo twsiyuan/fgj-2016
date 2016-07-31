@@ -29,6 +29,11 @@ public class CharacterMovement : MonoBehaviour
 
 	bool physicalMode = true;
 
+	void OnDisable ()
+	{
+		GetComponent<Rigidbody2D> ().isKinematic = true;
+	}
+
 	void Awake ()
 	{
 		this.layerMask = LayerMask.GetMask ("Ground");
