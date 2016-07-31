@@ -6,6 +6,7 @@ public class MonsterMove : MonoBehaviour {
 
 	public float speed = 10.0f; //怪物移動速度
 	public bool slip = true;
+	public int slipDir = 1;
 	public int initDir = 1;
 
 	int dir = 1;
@@ -16,7 +17,7 @@ public class MonsterMove : MonoBehaviour {
 	void DoSlip(){
 		var x = !this.slip ? 1 : this.dir > 0 ? 1 : -1;
 		var s = this.transform.localScale;
-		this.transform.localScale = new Vector3 (x, s.y, s.z);
+		this.transform.localScale = new Vector3 (x * slipDir, s.y, s.z);
 	}
 
 	void Start()
