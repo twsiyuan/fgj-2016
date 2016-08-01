@@ -1,6 +1,6 @@
 ﻿# Zoom
 
-![Logo](/Arts/start-end/logo.PNG =450x)
+<img src="/Arts/start-end/logo.PNG" alt="Logo" width="450px"/>
 
 ## Introduction
 
