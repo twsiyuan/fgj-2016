@@ -25,7 +25,7 @@ Drag the slide bar to change the size and position. Use the feature to solve the
 * ray
 * 橘之介
 * 5a
-* [王思元](http://twsiyuan.com/fgj-2016)
+* [王思元](http://twsiyuan.com/)
 * 洪子凡 (Hubert)
 
 ## Shot
