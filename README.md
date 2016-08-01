@@ -1,4 +1,4 @@
-# Zoom
+ï»¿# Zoom
 
 ![Logo](/Arts/start-end/logo.PNG)
 
@@ -23,9 +23,9 @@ Drag the slide bar to change the size and position. Use the feature to solve the
 
 ## Members
 
-* ÄÒ
+* é»¨
 * ray
-* ¾ï¤§¤¶
+* æ©˜ä¹‹ä»‹
 * 5a
-* ¤ı«ä¤¸
-* ¬x¤l¤Z (Hubert)
+* ç‹æ€å…ƒ
+* æ´ªå­å‡¡ (Hubert)
