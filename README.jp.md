@@ -1,5 +1,7 @@
 # Zoom
 
+[English](README.md) | [中文](README.ch.md) | [日本語](README.jp.md)
+
 <img src="/Arts/start-end/logo.PNG" alt="Logo" width="450px"/>
 
 ## 紹介
