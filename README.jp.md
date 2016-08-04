@@ -24,10 +24,12 @@ FGJ2016のプロジェクト、詳しいは[FGJのwiki]((http://fgj.igda.jp/doku
 
 * [黨](https://www.facebook.com/chuansiang.dang)
 * ray
-* 橘之介
+* [橘之介(Luigi)](https://www.facebook.com/profile.php?id=100000166043481)
 * 5a
 * [王思元](http://twsiyuan.com/)
 * 洪子凡 (Hubert)
+
+<img src="/Arts/fgj16_teamA.JPG" alt="fgj16_teamA"/>
 
 ## プレビュー
 
