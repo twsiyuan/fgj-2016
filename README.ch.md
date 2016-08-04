@@ -30,7 +30,7 @@ FGJ 2016 遊戲專案，詳細請見 [FGJ wiki](http://fgj.igda.jp/dokuwiki/doku
 * [王思元](http://twsiyuan.com/)
 * 洪子凡 (Hubert)
 
-<img src="/Arts/fgj16_teamA.jpg" alt="fgj16_teamA"/>
+<img src="/Arts/fgj16_teamA.JPG" alt="fgj16_teamA"/>
 
 ## 遊戲截圖
 
