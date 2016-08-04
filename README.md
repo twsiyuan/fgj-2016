@@ -24,10 +24,12 @@ Drag the slide bar to change the size and position. Use the feature to solve the
 
 * [黨](https://www.facebook.com/chuansiang.dang)
 * ray
-* 橘之介
+* [橘之介(Luigi)](https://www.facebook.com/profile.php?id=100000166043481)
 * 5a
 * [王思元](http://twsiyuan.com/)
 * 洪子凡 (Hubert)
+
+<img src="/Arts/fgj16_teamA.JPG" alt="fgj16_teamA"/>
 
 ## Shot
 
